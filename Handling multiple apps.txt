@@ -1,0 +1,10 @@
+private static WindowsDriver desktopSession=null; private static WindowsDriver edgeSession=null; //switch to desktop/root Session appCapabilities.setCapability("app", "Root"); desktopSession = new WindowsDriver(new URL("http://127.0.0.1:4723"), appCapabilities);
+
+//getting the native window handle of app to switch to String 
+NativeWindowHandle=desktopSession.findElementByName("xyz"); //name of the app you wish to switch to int natWinHandleInt = Integer.parseInt(NativeWindowHandle); String natWinHandleStr = Integer.toHexString(natWinHandleInt); String handle="0x"+natWinHandleStr;
+
+//switching to different app appCapabilities.setCapability("appTopLevelWindow", handle); edgeSession=new 
+WindowsDriver(new URL("http://127.0.0.1:4723"), appCapabilities);
+
+//do stuff with the new app
+
