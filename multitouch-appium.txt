@@ -1,0 +1,13 @@
+@Test public void multiTouchTest() {
+  Activity activity = new Activity("io.appium.android.apis", ".view.Buttons1");
+  driver.startActivity(activity);
+  TouchAction press = new TouchAction(driver)
+      .press(element(driver.findElementById("io.appium.android.apis:id/button_toggle")))
+      .waitAction(waitOptions(ofSeconds(1)))
+      .release();
+  new MultiTouchAction(driver)
+      .add(press)
+      .perform();
+  assertEquals("ON" ,driver
+      .findElementById("io.appium.android.apis:id/button_toggle").getText());
+}
